@@ -25,7 +25,7 @@ public class CameraSensitivityMultiplier : MonoBehaviour
     }
 
 #if UNITY_EDITOR
-    // Atualiza em tempo real no Inspector
+    // Update sensitivity in editor when values change
     void OnValidate()
     {
         if (m_axisController == null)
@@ -39,12 +39,12 @@ public class CameraSensitivityMultiplier : MonoBehaviour
     {
         if (m_axisController == null) return;
 
-        // X Axis (geralmente index 0)
+        // X Axis (usually index 0)
         var axisX = m_axisController.Controllers[0];
         axisX.Input.Gain = m_baseX * m_sensitivityMultiplier;
         m_axisController.Controllers[0] = axisX;
 
-        // Y Axis (geralmente index 1)
+        // Y Axis (usually index 1)
         var axisY = m_axisController.Controllers[1];
         axisY.Input.Gain = m_baseY * m_sensitivityMultiplier;
         m_axisController.Controllers[1] = axisY;
